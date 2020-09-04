@@ -16,7 +16,7 @@ class PostsController extends Controller
     ];
 
     public function __construct() {        
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'index']);
     }
 
     /**
@@ -26,7 +26,14 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        
+        if (!auth()->user()) { return view('posts.index'); }
+
+        $users = auth()->user()->following()->pluck('profiles.user_id');
+        $posts = Post::whereIn('user_id', $users)->latest()->paginate(1);
+        $data = array('posts' => $posts);
+        
+        return view('posts.index', $data);
     }
 
     /**

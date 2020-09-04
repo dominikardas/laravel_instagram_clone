@@ -13,12 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/profile', 'ProfilesController', ['only' => ['show', 'edit', 'update']]);
+Route::get('/', 'PostsController@index')->name('index');
+Route::post('follows/{user}', 'FollowsController@store');
+
+Route::resource('/profile', 'ProfilesController', ['only' => ['index', 'show', 'edit', 'update']]);
 Route::resource('/p', 'PostsController');

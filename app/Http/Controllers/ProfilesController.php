@@ -26,7 +26,6 @@ class ProfilesController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-
         $data = ['user' => $user];
 
         return view('profiles.show', $data);
@@ -42,6 +41,7 @@ class ProfilesController extends Controller
     {
         $user = User::findOrFail($id);
         $this->authorize('update', $user->profile);
+        
         $data = array('user' => $user);
         return view('profiles.edit', $data);
     }
@@ -56,10 +56,7 @@ class ProfilesController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-
-        if ($id != auth()->user()->id) {
-            die('403');
-        }
+        $this->authorize('update', $user->profile);
 
         $data = request()->validate($this->_validateRules);
         auth()->user()->profile->update($data);

@@ -1,2 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,300,500&display=swap');
+
+@font-face {
+    font-family: 'icomoon';
+    src:  url('fonts/icomoon.eot?n9eozv');
+    src:  url('fonts/icomoon.eot?n9eozv#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?n9eozv') format('truetype'),
+        url('fonts/icomoon.woff?n9eozv') format('woff'),
+        url('fonts/icomoon.svg?n9eozv#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}

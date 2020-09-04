@@ -48,6 +48,10 @@ class User extends Authenticatable
         return $this->hasMany(Post::class)->latest();
     }
 
+    public function following() {
+        return $this->belongsToMany(Profile::class);
+    }
+
     /**
      * Boot
      */
@@ -59,5 +63,13 @@ class User extends Authenticatable
         static::created(function ($user){
             $user->profile()->create();
         });
+    }
+
+    /**
+     * Helpers
+     */
+    public function follows($id) {
+        $user = User::findOrFail($id);
+        return (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
     }
 }

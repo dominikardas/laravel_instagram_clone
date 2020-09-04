@@ -3,14 +3,16 @@
 @section('content')
     <div class="l-profile-header">
         <div class="l-profile-image">
-            <img class="rounded-circle" src="{{ $user->profile->profileImage()}}">
+            <img class="rounded-circle" src="{{ $user->profile->profileImage() }}">
         </div>
         <div class="l-profile-info">
             <div class="l-profile-name">
                 <span>
                     {{ $user->username }}
                 </span>
-                <a class="btn btn-primary" href="#">Follow</a>
+                @auth
+                    <follow-button class="btn btn-primary" user-id="{{ $user->id }}" follows="{{ auth()->user()->follows($user->id) }}"></follow-button>
+                @endauth
             </div>
             
             @can('update', $user->profile)
@@ -24,9 +26,9 @@
                 </div>
             @endcan
             <div class="l-profile-details">
-                <span><b>23</b> posts</span>
-                <span><b>0</b> followers</span>
-                <span><b>0</b> following</span>
+                <span><b>{{ $user->posts->count() }}</b> posts</span>
+                <span><b>{{ $user->profile->followers->count() }}</b> followers</span>
+                <span><b>{{ $user->following->count() }}</b> following</span>
             </div>
             <div class="l-profile-description">
                 <span><b>{{ $user->profile->title }}</b></span>
