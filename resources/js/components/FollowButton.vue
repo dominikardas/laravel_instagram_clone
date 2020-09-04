@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a href="#" @click="followUser" v-text="followBtnText"></a>
+        <a @click="followUser" v-text="followBtnText" title="Follow User"></a>
     </div>
 </template>
 
@@ -10,7 +10,7 @@
         props: ['userId', 'follows'],
         
         mounted() {
-            console.log('[vue] FollowButton mounted.');
+            console.log('[vue] FollowButton mounted');
         },
 
         data: function() {
@@ -21,7 +21,7 @@
 
         methods: {
             followUser() {
-                axios.post('/follows/' + this.userId)
+                axios.post('/follow/' + this.userId)
                     .then(res => {this.status = !this.status; console.log(res.data)});
             }
         },

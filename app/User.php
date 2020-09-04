@@ -48,6 +48,10 @@ class User extends Authenticatable
         return $this->hasMany(Post::class)->latest();
     }
 
+    public function likedPosts() {
+        return $this->belongsToMany(Post::class, 'likes');
+    }
+
     public function following() {
         return $this->belongsToMany(Profile::class);
     }
@@ -71,5 +75,13 @@ class User extends Authenticatable
     public function follows($id) {
         $user = User::findOrFail($id);
         return (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
+    }
+    
+    public function likePost($postId){
+        return auth()->user()->likedPosts()->toggle($postId);
+    }
+
+    public function isLikedPost($postId) {
+        return auth()->user()->likedPosts->contains($postId);
     }
 }

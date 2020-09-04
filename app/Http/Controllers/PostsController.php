@@ -30,7 +30,7 @@ class PostsController extends Controller
         if (!auth()->user()) { return view('posts.index'); }
 
         $users = auth()->user()->following()->pluck('profiles.user_id');
-        $posts = Post::whereIn('user_id', $users)->latest()->paginate(1);
+        $posts = Post::whereIn('user_id', $users)->latest()->paginate(2);
         $data = array('posts' => $posts);
         
         return view('posts.index', $data);

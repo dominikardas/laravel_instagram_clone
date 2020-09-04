@@ -15,8 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// Index
 Route::get('/', 'PostsController@index')->name('index');
-Route::post('follows/{user}', 'FollowsController@store');
 
+// Follows
+Route::post('/follow/{user}', 'FollowsController@store');
+
+// Likes
+// Route::post('/likes', 'LikesController@index');
+Route::post('/like/{post_id}', 'LikesController@store');
+
+// Controllers
 Route::resource('/profile', 'ProfilesController', ['only' => ['index', 'show', 'edit', 'update']]);
 Route::resource('/p', 'PostsController');

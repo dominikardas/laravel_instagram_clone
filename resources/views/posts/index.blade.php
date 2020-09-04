@@ -23,7 +23,9 @@
                             @endauth
                         </div>
                         <div class="l-post-image">
-                            <span><img src="{{ $post->postImage() }}" alt=""></span>
+                            <a href="/p/{{ $post->id }}">
+                                <span><img src="{{ $post->postImage() }}" alt=""></span>
+                            </a>
                         </div>
                         <div class="l-post-desc">
                             <div class="l-post-description">
@@ -34,7 +36,7 @@
                             <div class="l-post-footer">
                                 <div class="l-post-options">
                                     <div>
-                                        <span class="icon-liked" title="Like Post"></span>
+                                        <like-button post-id="{{ $post->id }}" liked="{{ auth()->user()->isLikedPost($post->id) }}"></like-button>
                                         {{-- <span class="icon-comment"></span>
                                         <span class="icon-favorite"></span> --}}
                                     </div>
@@ -45,7 +47,7 @@
                                     @endcan
                                 </div>
                                 <div class="l-post-info">
-                                    <span><b>10 likes</b></span>
+                                    <span><b>{{ $post->likes()->count() }} {{ ( $post->likes()->count() == 1 ) ? 'like' : 'likes' }}</b></span>
                                     <span>19 hours ago</span>
                                 </div>
                             </div>
