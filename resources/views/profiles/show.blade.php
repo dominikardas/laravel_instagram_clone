@@ -2,11 +2,14 @@
 
 @section('content')
     <div class="l-profile-header">
-        <div class="l-profile-image">
+        <div class="l-profile-image hide-720">
             <img class="rounded-circle" src="{{ $user->profile->profileImage() }}">
         </div>
         <div class="l-profile-info">
             <div class="l-profile-name">
+                <div class="l-profile-image show-720">
+                    <img class="rounded-circle" src="{{ $user->profile->profileImage() }}">
+                </div>
                 <span>
                     {{ $user->username }}
                 </span>
@@ -26,9 +29,9 @@
                 </div>
             @endcan
             <div class="l-profile-details">
-                <span><b>{{ $user->posts->count() }}</b> posts</span>
-                <span><b>{{ $user->profile->followers->count() }}</b> followers</span>
-                <span><b>{{ $user->following->count() }}</b> following</span>
+                <span>Posts (<b>{{ $user->posts->count() }}</b>)</span>
+                <span>Followers (<b>{{ $user->profile->followers->count() }}</b>)</span>
+                <span>Following (<b>{{ $user->following->count() }}</b>)</span>
             </div>
             <div class="l-profile-description">
                 <span><b>{{ $user->profile->title }}</b></span>

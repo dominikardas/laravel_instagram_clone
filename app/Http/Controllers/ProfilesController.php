@@ -12,8 +12,9 @@ class ProfilesController extends Controller
     private $_validateRules = [        
         // 'name' => 'required|string',
         // 'username' => 'required|string',
-        'description' => 'string|nullable',
-        'url' => 'url|nullable',
+        'title' => ['string', 'nullable'],
+        'description' => ['string', 'nullable'],
+        'url' => ['url', 'nullable']
         // 'image' => ''
     ];
 

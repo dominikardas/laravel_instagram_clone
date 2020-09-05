@@ -38,6 +38,18 @@
                         <input id="username" type="name" class="@error('username') is-invalid @enderror" name="username" value="{{ old('username') ?? $user->username }}" autocomplete="username">
                     </div>
                 </div> --}}
+
+                <div class="l-form_row">
+                    @error('title')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <div class="l-row_input">
+                        <label for="title">{{ __('Post Title') }}</label>
+                        <input id="title" type="text" class="@error('title') is-invalid @enderror" name="title" value="{{ old('title') ?? $user->profile->title }}" autocomplete="title">
+                    </div>
+                </div>
     
                 <div class="l-form_row">
                     @error('description')
@@ -72,4 +84,3 @@
         </div>
     </div>
 @endsection
-

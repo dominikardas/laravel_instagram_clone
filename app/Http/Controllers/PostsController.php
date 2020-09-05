@@ -10,8 +10,7 @@ use App\Post;
 class PostsController extends Controller
 {
     private $_validateRules = [
-        'caption'   => 'required|string',
-        'description' => 'string|nullable',
+        'description' => ['required', 'string', 'nullable'],
         'image'   => ['required', 'image', 'max:1999']
     ];
 
@@ -61,7 +60,6 @@ class PostsController extends Controller
         $image->save();
 
         auth()->user()->posts()->create([
-            'caption' => $data['caption'],
             'description' => $data['description'],
             'image' => $imagePath
         ]);
@@ -80,6 +78,15 @@ class PostsController extends Controller
         $post = Post::findOrFail($id);
         $data = array('post' => $post);
         return view('posts.show', $data);
+
+        // $post = Post::findOrFail($id);
+        // $data = array(
+        //     'post' => $post,
+        //     'user' => $post->user,
+        //     'isLiked' => auth()->user()->isLikedPost($post->id)
+        // );
+        
+        // return view('posts.show', $data);
     }
 
     /**

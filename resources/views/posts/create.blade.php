@@ -8,18 +8,6 @@
                 @csrf
     
                 <div class="l-form_row">
-                    @error('caption')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <div class="l-row_input">
-                        <label for="caption">{{ __('Post Caption') }}</label>
-                        <input id="caption" type="text" class="@error('caption') is-invalid @enderror" name="caption" value="{{ old('caption') }}" autocomplete="caption">
-                    </div>
-                </div>
-    
-                <div class="l-form_row">
                     @error('description')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

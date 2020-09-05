@@ -25,6 +25,10 @@ Route::post('/follow/{user}', 'FollowsController@store');
 // Route::post('/likes', 'LikesController@index');
 Route::post('/like/{post_id}', 'LikesController@store');
 
+// Comments
+Route::post('/comment/resp/{post_id}', 'CommentsController@storeResp');
+Route::post('/comment/{post_id}', 'CommentsController@store');
+
 // Controllers
 Route::resource('/profile', 'ProfilesController', ['only' => ['index', 'show', 'edit', 'update']]);
 Route::resource('/p', 'PostsController');

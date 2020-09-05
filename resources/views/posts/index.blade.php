@@ -11,7 +11,7 @@
                     <div class="c-post-container c-post-container-index">
                         <div class="l-post-author">
                             <span class="l-author-image">
-                                <img class="rounded-circle" src="{{ $post->user->profile->profileImage() }}" alt="">
+                                <img class="l-profile-image__preview" src="{{ $post->user->profile->profileImage() }}" alt="">
                             </span>
                             <span class="dot-separator"></span>
                             <span class="l-author-username">
@@ -29,11 +29,10 @@
                         </div>
                         <div class="l-post-desc">
                             <div class="l-post-description">
-                                <span>{{ $post->caption }}</span>
                                 <span>{{ $post->description }}</span>
                             </div>
                             <span class="line-separator"></span>
-                            <div class="l-post-footer">
+                            <div class="l-post-likes">
                                 <div class="l-post-options">
                                     <div>
                                         <like-button post-id="{{ $post->id }}" liked="{{ auth()->user()->isLikedPost($post->id) }}"></like-button>
