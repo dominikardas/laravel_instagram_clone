@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="l-post-info">
                                     <span><b>{{ $post->likes()->count() }} {{ ( $post->likes()->count() == 1 ) ? 'like' : 'likes' }}</b></span>
-                                    <span>19 hours ago</span>
+                                    <span>{{ $post->created_at }}</span>
                                 </div>
                             </div>
                         </div>

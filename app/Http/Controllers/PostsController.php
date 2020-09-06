@@ -14,8 +14,9 @@ class PostsController extends Controller
         'image'   => ['required', 'image', 'max:1999']
     ];
 
-    public function __construct() {        
-        $this->middleware('auth', ['except' => 'index']);
+    public function __construct()
+    {        
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     /**

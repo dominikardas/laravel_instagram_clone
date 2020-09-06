@@ -14,8 +14,8 @@
                 <span class="l-author-username">
                     <a href="/profile/{{ $post->user->id }}"><b>{{ $post->user->username }}</b></a>
                 </span>
-                <span class="dot-separator"></span>
                 @auth
+                    <span class="dot-separator"></span>
                     <follow-button class="link" user-id="{{ $post->user->id }}" follows="{{ auth()->user()->follows($post->user->id) }}"></follow-button>
                 @endauth
             </div>
@@ -52,7 +52,9 @@
             <div class="l-post-likes">
                 <div class="l-post-options">
                     <div>
+                        @auth
                         <like-button post-id="{{ $post->id }}" liked="{{ auth()->user()->isLikedPost($post->id) }}"></like-button>
+                        @endauth
                         {{-- <span class="icon-comment"></span>
                         <span class="icon-favorite"></span> --}}
                     </div>
@@ -64,7 +66,7 @@
                 </div>
                 <div class="l-post-info">
                     <span><b>{{ $post->likes()->count() }} likes</b></span>
-                    <span>19 hours ago</span>
+                    <span>{{ $post->created_at }}</span>
                 </div>
             </div>
             <span class="line-separator"></span>
