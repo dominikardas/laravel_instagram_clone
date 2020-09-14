@@ -1,6 +1,9 @@
 @extends('layouts.auth')
 
 @section('content')
+    <h1>vue</h1>
+    <register-form></register-form>
+    <h1>blade</h1>
     <div class="c-form-container c-form-auth-container">
         <div class="l-form-header">
             Sign Up

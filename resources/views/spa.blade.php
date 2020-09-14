@@ -25,12 +25,6 @@
 <body>
     <div id="app">
         <app-container></app-container>
-        <div class="c-container">
-            @include('inc.navbar')
-            <div class="c-container-content">
-                @yield('content')
-            </div>
-        </div>
     </div>
 </body>
 </html>

@@ -9,31 +9,25 @@
 <script>
     export default {
 
-        props: ['postId', 'liked'],
-
-        mounted: function() {
-            console.log('[vue] LikeButton mounted');
-        },
+        props: ['postId', 'isLiked'],
 
         data: function() {
             return {
-                status: this.liked
+                status: this.isLiked
+            }
+        },
+
+        computed: {     
+            postClass() {
+                return (this.status) ? 'icon-liked' : 'icon-like';
             }
         },
 
         methods: {
             likePost() {
-                axios.post('/like/' + this.postId)
-                    .then(res => {this.status = !this.status; console.log(res)});
+                if (this.$store.dispatch('posts/likePost', this.postId))
+                    this.status = !this.status;
             }
-        },
-
-        computed: {
-            postClass() {
-                return (this.status) ? 'icon-liked' : 'icon-like';
-            }
-        }
-
-        
+        }        
     }
 </script>

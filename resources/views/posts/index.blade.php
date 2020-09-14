@@ -1,13 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    @guest
+
+    <index></index>
+
+    {{-- @guest
         <div class="l-index_login">
             Welcome
         </div>
     @else
         @if (count($posts) > 0)
                 @foreach($posts as $post)
+                    <post post-id="{{ $post->id }}" is-index="true"></post>
                     <div class="c-post-container c-post-container-index">
                         <div class="l-post-author">
                             <span class="l-author-image">
@@ -36,8 +40,6 @@
                                 <div class="l-post-options">
                                     <div>
                                         <like-button post-id="{{ $post->id }}" liked="{{ auth()->user()->isLikedPost($post->id) }}"></like-button>
-                                        {{-- <span class="icon-comment"></span>
-                                        <span class="icon-favorite"></span> --}}
                                     </div>
                                     @can('update', $post->user->profile)
                                         <div>
@@ -57,5 +59,5 @@
         @else
             <p><b>No posts</b></p>
         @endif
-    @endguest
+    @endguest --}}
 @endsection

@@ -97,6 +97,24 @@
   cursor: pointer;
 }
 
+.link-replies {
+  position: relative;
+  color: #999;
+  margin: 5px 0;
+  padding-left: 35px;
+}
+
+.link-replies::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 25px;
+  height: 1px;
+  background: #999;
+}
+
 .is-invalid {
   border: 2px solid #C33 !important;
 }
@@ -304,6 +322,15 @@ input:focus {
 
 .c-form-auth-container {
   max-width: 350px;
+}
+
+.c-forms-container {
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+  -ms-align-items: center;
+  align-items: center;
+  width: 100%;
 }
 
 .c-form-container {
@@ -590,9 +617,18 @@ input:focus {
 .c-post-container {
   display: -ms-flex;
   display: flex;
-  max-height: 625px;
+  max-height: 583px;
   background: #FFF;
   border: 1px solid #DDD;
+}
+
+.c-post-container .l-post-image {
+  display: -ms-flex;
+  display: flex;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
 }
 
 .c-post-container .l-post-desc {
@@ -625,6 +661,7 @@ input:focus {
 }
 
 .c-post-container .l-post-comments {
+  max-height: 400px;
   height: 100%;
   overflow-y: auto;
 }
@@ -634,7 +671,7 @@ input:focus {
   display: flex;
   -ms-align-items: flex-start;
   align-items: flex-start;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .c-post-container .l-post-comments .l-post-comment .l-comment {
@@ -650,8 +687,21 @@ input:focus {
 }
 
 .c-post-container .l-post-comments .l-post-comment .l-comment .l-comment-actions {
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
   font-size: 12px;
   color: #444;
+}
+
+.c-post-container .l-post-comments .l-post-comment .l-comment .l-comment-replies {
+  display: none;
+}
+
+.c-post-container .l-post-comments .l-post-comment .l-comment .l-comment-replies.show-replies {
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
 }
 
 .c-post-container .l-post-likes .l-post-options {
@@ -669,6 +719,7 @@ input:focus {
 }
 
 .c-post-container .l-post_new-comment {
+  position: relative;
   width: 100%;
   max-height: 50px;
   height: 100%;
@@ -686,6 +737,21 @@ input:focus {
 
 .c-post-container .l-post_new-comment input:focus {
   outline: none;
+}
+
+.c-post-container .l-post_comment-reply {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  font-size: 12px;
+  color: #CCC;
+  overflow: hidden;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 920px) {

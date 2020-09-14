@@ -17,10 +17,12 @@ class CommentsResource extends ResourceCollection
         return [
             $this->collection->transform(function($comment){
                 return [
-                    'id' => $comment->id,
-                    'content' => $comment->content,
-                    'username' => $comment->user->username,
-                    'profileImage' => $comment->user->profile->image,
+                    'id'            => $comment->id,
+                    'parent_id'     => $comment->parent_id,
+                    'content'       => $comment->content,
+                    'username'      => $comment->user->username,
+                    'profileImage'  => $comment->user->profile->image,
+                    'replies'       => new CommentsResource($comment->replies())
                 ];
             })
         ];

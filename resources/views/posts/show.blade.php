@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="c-post-container">
+    <post post-id="{{ $post->id }}"></post>
+    {{-- <div class="c-post-container">
         <div class="l-post-image">
             <span><img src="{{ $post->postImage() }}" alt=""></span>
         </div>
@@ -55,8 +56,8 @@
                         @auth
                         <like-button post-id="{{ $post->id }}" liked="{{ auth()->user()->isLikedPost($post->id) }}"></like-button>
                         @endauth
-                        {{-- <span class="icon-comment"></span>
-                        <span class="icon-favorite"></span> --}}
+                        <span class="icon-comment"></span>
+                        <span class="icon-favorite"></span>
                     </div>
                     @can('update', $post->user->profile)
                         <div>
@@ -73,11 +74,11 @@
             <div class="l-post_new-comment">
                 <form class="" method="POST" action="/comment/{{ $post-> id }}">
                     @csrf
-                    {{-- <input id="parent_id" name="parent_id" type="hidden" value="3">  --}}
+                    <input id="parent_id" name="parent_id" type="hidden" value="3"> 
                     <input id="comment" name="comment" type="text" value="{{ old('comment') }}" placeholder="Add a comment..." required>
                     <button type="submit" class="hidden">Submit</button>
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection

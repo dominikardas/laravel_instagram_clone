@@ -34,6 +34,8 @@ class PostsController extends Controller
         $data = array('posts' => $posts);
         
         return view('posts.index', $data);
+
+        // return view('spa');
     }
 
     /**

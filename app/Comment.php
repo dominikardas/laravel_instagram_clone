@@ -18,4 +18,12 @@ class Comment extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Helpers
+     */
+
+    public function replies() {
+        return Comment::where('parent_id', $this->id)->get();
+    }
 }

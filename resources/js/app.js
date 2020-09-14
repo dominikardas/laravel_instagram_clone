@@ -9,6 +9,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+// import Vuetify from '../plugins/vuetify';
+import store from './store';
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -20,8 +23,20 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+Vue.component('app-container', require('./components/AppContainer.vue').default);
+
 Vue.component('FollowButton', require('./components/FollowButton.vue').default);
 Vue.component('LikeButton', require('./components/LikeButton.vue').default);
+Vue.component('Comment', require('./components/Comment.vue').default);
+Vue.component('ValidationErrors', require('./components/ValidationErrors.vue').default);
+
+
+// Pages
+Vue.component('Index', require('./components/Pages/Index.vue').default);
+Vue.component('Post', require('./components/Pages/Post.vue').default);
+
+Vue.component('LoginForm', require('./components/Auth/LoginForm.vue').default);
+Vue.component('RegisterForm', require('./components/Auth/RegisterForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,5 +45,7 @@ Vue.component('LikeButton', require('./components/LikeButton.vue').default);
  */
 
 const app = new Vue({
+    // vuetify: Vuetify,
     el: '#app',
+    store,
 });

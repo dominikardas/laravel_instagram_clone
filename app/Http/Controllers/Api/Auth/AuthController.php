@@ -42,6 +42,7 @@ class AuthController extends Controller
 
         return ResponseHelper::success($data);
     }
+    
     /**
      * Login a user
      *

@@ -4,6 +4,8 @@ namespace App;
 
 use Laravel\Passport\HasApiTokens;
 
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -79,16 +81,16 @@ class User extends Authenticatable
     /**
      * Helpers
      */
-    public function follows($id) {
-        $user = User::findOrFail($id);
-        return (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
+    public function follows($id, $api=false) {
+        // dd($id);
+        return $api ? Auth::guard('api')->user()->following->contains($id) : auth()->user()->following->contains($id);
     }
     
     public function likePost($postId){
         return auth()->user()->likedPosts()->toggle($postId);
     }
 
-    public function isLikedPost($postId) {
-        return auth()->user()->likedPosts->contains($postId);
+    public function isLikedPost($postId, $api=false) {
+        return $api ? Auth::guard('api')->user()->likedPosts->contains($postId) : auth()->user()->likedPosts->contains($postId);
     }
 }

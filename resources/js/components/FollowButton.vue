@@ -8,10 +8,6 @@
     export default {
 
         props: ['userId', 'follows'],
-        
-        mounted() {
-            console.log('[vue] FollowButton mounted');
-        },
 
         data: function() {
             return {
@@ -19,16 +15,16 @@
             }
         },
 
-        methods: {
-            followUser() {
-                axios.post('/follow/' + this.userId)
-                    .then(res => {this.status = !this.status; console.log(res.data)});
-            }
-        },
-
         computed: {
             followBtnText() {
                 return (this.status) ? 'Unfollow' : 'Follow';
+            }
+        },
+
+        methods: {
+            followUser() {
+                if (this.$store.dispatch('currentUser/followUser', this.userId))
+                    this.status = !this.status;
             }
         }
 

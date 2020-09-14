@@ -28,6 +28,25 @@
     cursor: pointer;
 }
 
+.link-replies {
+    position: relative;
+    color: #999;
+
+    margin: 5px 0;
+    padding-left: 35px;
+}
+
+.link-replies::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 25px;
+    height: 1px;
+    background: #999;
+}
+
 .is-invalid {
     border: 2px solid $invalid-clr !important;
 }
